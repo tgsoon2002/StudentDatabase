@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace DatabaseView
 {
+    enum status { current, pending, graduate, cancel };
+    enum visaStatus { F1, M1, other };
     class Student
     {
-        enum status { current, pending, graduate, cancel };
-        enum visaStatus { F1, M1, other };
+      
+
         int id;
         string _FName;
         string _LName;
@@ -47,14 +49,16 @@ namespace DatabaseView
             get { return _LName; }
             set { _LName = value; }
         }
-        public status Status
+        public status studentStatus
         {
             get { return _status; }
             set { _status = value; } 
         }
-
-
-
+        public bool FinacialAid
+        {
+            get { return _FinaAid; }
+            set { _FinaAid = value; }
+        }
         public List<Student> GetEmpList()
         {
             List<Student> temp = new List<Student>();
