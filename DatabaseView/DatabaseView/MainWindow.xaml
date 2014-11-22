@@ -1,0 +1,22 @@
+﻿<Window x:Class="DatabaseView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="415.508" Width="741.466">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="81"/>        
+            <RowDefinition Height="231*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Name ="DataGrid" Grid.Row="1" BorderThickness="2" BorderBrush="Black"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+            <Button Content="LoadGrid" Width="90" Click="LoadButton_Click" Grid.Row="3" Margin="5,0"/>
+            <Button Content="ClearGrid" Width="90" Click="ClearButton_Click" Grid.Row="3" Margin="5,0"/>
+            <Button Content="SaveGrid" Width="90" Click="SaveButton_Click" Grid.Row="3" Margin="5,0"/>
+        </StackPanel>
+       
+        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="38"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="43,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>

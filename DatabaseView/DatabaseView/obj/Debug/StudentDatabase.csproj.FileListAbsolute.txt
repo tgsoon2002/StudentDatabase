@@ -1,0 +1,12 @@
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\bin\Debug\DatabaseView.exe.config
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\bin\Debug\DatabaseView.exe
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\bin\Debug\DatabaseView.pdb
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\MainWindow.baml
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\MainWindow.g.cs
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\App.g.cs
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\DatabaseView_MarkupCompile.cache
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\DatabaseView.g.resources
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\DatabaseView.Properties.Resources.resources
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\StudentDatabase.csproj.GenerateResource.Cache
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\DatabaseView.exe
+C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\DatabaseView.pdb
