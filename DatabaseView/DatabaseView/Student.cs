@@ -10,60 +10,34 @@ namespace DatabaseView
     enum visaStatus { F1, M1, other };
     class Student
     {
-      
-
-        int id;
-        string _FName;
-        string _LName;
-        string _MName;
-        status _status;
-        bool _FinaAid;
-        visaStatus _visaStats;
-        bool _fullTime;
-        DateTime _StartDate;
-        DateTime _ScheduleDate;
-        DateTime _EndDate;
-        DateTime _DOB;
-        string _Note;
-        string _Address;
-        string _City;
-        string _State;
-        int _Zip;
-        int _CellPhone;
-        int _HomePhone;
 
 
+        public int Id { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
+        public string MName { get; set; }
+        public status status { get; set; }
+        public bool FinaAid { get; set; }
+        public visaStatus visaStats { get; set; }
+        public bool fullTime { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime ScheduleDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime DOB { get; set; }
+        public string Note { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public int Zip { get; set; }
+        public int CellPhone { get; set; }
+        public int HomePhone { get; set; }
 
-        public int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-        public string FirstName
-        {
-            get { return _FName; }
-            set { _FName = value; }
-        }
-        public string LastName
-        {
-            get { return _LName; }
-            set { _LName = value; }
-        }
-        public status studentStatus
-        {
-            get { return _status; }
-            set { _status = value; } 
-        }
-        public bool FinacialAid
-        {
-            get { return _FinaAid; }
-            set { _FinaAid = value; }
-        }
-        public List<Student> GetEmpList()
-        {
-            List<Student> temp = new List<Student>();
-            temp.Add(new Student() { id = 1, FirstName = "Kien", LastName = "Nguyen" });            
-            return temp;
-        }
+        //public string Details
+        //{
+        //    get
+        //    {
+        //        return String.Format("{0} {1} was born on {2}", this.FName, this.LName, this.DOB.ToLongDateString());
+        //    }
+        //}    
     }
 }
