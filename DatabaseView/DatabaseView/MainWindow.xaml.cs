@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +27,8 @@ namespace DatabaseView
     {
         //local property
         DataGrid localData = new DataGrid();
-        List<Student> users = new List<Student>();
+        public ObservableCollection<Student> Myusers {get;set;}
+
         Excel.Application excelApp = new Excel.Application();
         Excel.Workbook workbook;
         Excel.Worksheet worksheet;
@@ -33,45 +37,39 @@ namespace DatabaseView
         
         public MainWindow()
         {
-            InitializeComponent();
-
-
-            //users.Add(new Student() { Id = 1, FName = "John Doe", DOB = new DateTime(1971, 7, 23) });
-            //users.Add(new Student() { Id = 2, FName = "Jane Doe", DOB = new DateTime(1974, 1, 17) });
-            //users.Add(new Student() { Id = 3, FName = "Sammy Doe", DOB = new DateTime(1991, 9, 2) });
-
-            //DataGrid.ItemsSource = users;
-            workbook = excelApp.Workbooks.Open(Environment.CurrentDirectory + "\\Excel.xlsx");
-            worksheet = (Excel.Worksheet)workbook.Sheets["Test Sheet"];
-            int column = 0;
-            //int row = 0;
-
-            range = worksheet.UsedRange;
-            DataGrid dt = new DataGrid();
-            for (column = 1; column <= range.Columns.Count; column++)
-            {
-                //dr[column - 1] = (range.Cells[row, column] as Excel.Range).Value2.ToString();
-                dt.Columns.Add((range.Cells[1, column] as Excel.Range).Value2.ToString());
-            }
-            //dt.Columns.Add("ID");
-            //dt.Columns.Add("Name");
-            //dt.Columns.Add("Position");
-            //dt.Columns.Add("Web Site");
-            //for (row = 2; row <= range.Rows.Count; row++)
-            //{
-            //    DataRow dr = dt.NewRow();
-            //    for (column = 1; column <= range.Columns.Count; column++)
-            //    {
-            //        dr[column - 1] = (range.Cells[row, column] as Excel.Range).Value2.ToString();
-            //    }
-            //    dt.Rows.Add(dr);
-            //    dt.AcceptChanges();
-            //}
-            //workbook.Close(true, Missing.Value, Missing.Value);
-            //excelApp.Quit();
-            //return dt.DefaultView;
+            InitializeComponent();   
+            OpenFileDialog dlg = new OpenFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+            workbook = excelApp.Workbooks.Open(dlg.FileName);
+            workSheethelper(workbook);
+            workbook.Close(true, null, null);
+            excelApp.Quit();
         }
-
+        public void workSheethelper(Excel.Workbook workBookIn)
+        {
+            int numSheets = workBookIn.Sheets.Count; // get number of sheet in the workbook
+            for (int sheetNum = 1; sheetNum < numSheets + 1; sheetNum++)
+            {
+                worksheet = (Excel.Worksheet)workBookIn.Sheets[sheetNum];
+             
+                range = worksheet.UsedRange;
+                for (var i = 2; i <= range.Rows.Count; i++)    // start add value to the range. skip the first on which for the header.
+                {
+                    Myusers.Add(new Student
+                    {
+                        Id = (int)(range.Cells[i, 1] as Excel.Range).Value2,
+                        FName = (string)(range.Cells[i, 2] as Excel.Range).Value2,
+                        LName = (string)(range.Cells[i, 3] as Excel.Range).Value2,
+                        MName = (string)(range.Cells[i, 4] as Excel.Range).Value2,
+                       
+                    });
+                }
+               
+                //put all cell into 2 dimension array of object                                      
+                //object[,] valueArray = (object[,])range.get_Value(Excel.XlRangeValueDataType.xlRangeValueDefault);
+                //ProcessObjects(valueArray);
+            }
+        }
         
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
@@ -93,7 +91,7 @@ namespace DatabaseView
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
-            DataGrid.ItemsSource = null;
+            MainDataGrid.ItemsSource = null;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

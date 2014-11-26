@@ -1,0 +1,16 @@
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\ExcelSpreadsheets.csprojResolveAssemblyReference.cache
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\MainWindow.g.cs
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\App.g.cs
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\ExcelSpreadsheets_MarkupCompile.cache
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\ExcelSpreadsheets_MarkupCompile.lref
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\bin\Debug\Model\Book1.xls
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\bin\Debug\ExcelSpreadsheets.exe
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\bin\Debug\ExcelSpreadsheets.pdb
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\ExcelSpreadsheets.csproj.ResolveComReference.cache
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\MainWindow.baml
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\ExcelSpreadsheets.g.resources
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\ExcelSpreadsheets.Properties.Resources.resources
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\ExcelSpreadsheets.csproj.GenerateResource.Cache
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\ExcelSpreadsheets.exe
+E:\Programming\example\datagrid-excel\C#\ExcelSpreadsheets\obj\x86\Debug\ExcelSpreadsheets.pdb

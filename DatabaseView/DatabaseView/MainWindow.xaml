@@ -17,7 +17,7 @@
         </Grid>
 
 
-        <DataGrid Name ="DataGrid" Grid.Row="1" BorderThickness="2" BorderBrush="Black" >
+        <DataGrid Name ="MainDataGrid" Grid.Row="1" BorderThickness="2" BorderBrush="Black" ItemsSource="{Binding users}" >
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Header="FirstName" Binding="{Binding FName}" />
                 <DataGridTextColumn Header="LastName" Binding="{Binding LName}" />
