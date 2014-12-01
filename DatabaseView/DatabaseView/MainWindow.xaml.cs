@@ -29,8 +29,12 @@ namespace DatabaseView
     /// </summary>
     public partial class MainWindow : Window
     {
+        //comboBox1.DataSource = Enum.GetValues(typeof(MyEnum));
+        
         //local property
-        //DataGrid localData = new DataGrid();
+        string fmtPhone = "000-000-0000";
+        string fmtSSN = "000-00-0000";
+
         public List<Student> Myusers = new List<Student>();
         //public ObservableCollection<Student> Myusers { get; set; }
         OpenFileDialog dlg = new OpenFileDialog();
@@ -38,17 +42,19 @@ namespace DatabaseView
         Excel.Workbook workbook;
         Excel.Worksheet worksheet;
         Excel.Range range;
-        
+
+       
         
         public MainWindow()
         {
             InitializeComponent();   
            
-            
+               
             
         }
         public void workSheethelper()
         {
+            
             dlg.DefaultExt = ".txt";
             dlg.Filter = "EXCEL Files (*.xls)|*.xlsx";
             Nullable<bool> result = dlg.ShowDialog();
@@ -60,49 +66,56 @@ namespace DatabaseView
 
             
             int numSheets = workbook.Sheets.Count; // get number of sheet in the workbook
-            for (int sheetNum = 1; sheetNum < numSheets + 1; sheetNum++)
-            {
-                worksheet = (Excel.Worksheet)workbook.Sheets[sheetNum];          
+            //for (int sheetNum = 1; sheetNum < numSheets + 1; sheetNum++)
+            //{
+                worksheet = (Excel.Worksheet)workbook.Sheets[1];          
                 range = worksheet.UsedRange;
+               
                 for (var i = 2; i <= range.Rows.Count; i++)    // start add value to the range. skip the first on which for the header.
                 {
+                    
+                    Student.status tempStats = (Student.status)Enum.Parse(typeof(Student.status), (string)(range.Cells[i, 4] as Excel.Range).Value2);
+                     Student.finalcialAid tempFA = (Student.finalcialAid)Enum.Parse(typeof(Student.finalcialAid), (string)(range.Cells[i, 5] as Excel.Range).Value2);
+                    Student.visaStatus tempVisaStats = (Student.visaStatus)Enum.Parse(typeof(Student.visaStatus), (string)(range.Cells[i, 6] as Excel.Range).Value2) ;
+                    Student.ethic tempEthic = (Student.ethic)Enum.Parse(typeof(Student.ethic), helperEthic(helperRetriveString(i,24)));
+                    //MessageBox.Show("row" + i);
                     Myusers.Add(new Student
                     {
                         Id = i,//(int)(range.Cells[i, 1] as Excel.Range).Value2,
                         FName = helperRetriveString(i, 1),
                         LName = helperRetriveString(i, 2),
                         MName = helperRetriveString(i,3),
-                        Status = (Student.status)Enum.Parse(typeof(Student.status), (string)(range.Cells[i, 4] as Excel.Range).Value2),
-                        FinaAid = helperBool(i,5),
-                        visaStats =(Student.visaStatus)Enum.Parse(typeof(Student.visaStatus), (string)(range.Cells[i, 6] as Excel.Range).Value2) ,
+                        Status = tempStats,
+                        FinaAid = tempFA,
+                        visaStats = tempVisaStats,
                         fullTime = helperBool(i,7),
                         StartDate = helperRetriveDate(i, 8),
                         ScheduleDate = helperRetriveDate(i, 9),
                         EndDate = helperRetriveDate(i,10),
-                        Note = helperRetriveString(i,11),
+                        Note = helperRetriveString(i,11),           
                         Address = helperRetriveString(i,12),
                         CellPhone =(double)(range.Cells[i, 13] as Excel.Range).Value2, 
                         Gender =(Student.gender)Enum.Parse(typeof(Student.gender), (string)(range.Cells[i, 14] as Excel.Range).Value2),
                         SSN = helperRetriveInt(i, 15),
                         driverLicenseNumber = helperRetriveString(i,16)  ,
                         DOB = helperRetriveDate(i,17) ,
-                        ByAge = (Student.byage)Enum.Parse(typeof(Student.byage),helperByAge(helperRetriveInt(i,18))) ,
-                        Country = helperRetriveString(i,19),
-                        CountryOfPaperWork = helperRetriveString(i, 20),
-                        KindOfPaperWork = helperRetriveString(i, 21),
-                        paperNumber = helperRetriveInt(i, 22) ,
-                        Ethic = (Student.ethic)Enum.Parse(typeof(Student.ethic), helperEthic(helperRetriveString(i,23))),
-                        Transfer = helperBool(i,24),
-                        HoursTransfer = helperRetriveInt(i,25),
-                        TotalEnroll = helperRetriveInt(i, 26),
-                        TotalHours = helperRetriveInt(i, 27),
-                        LeaveOrAbsense = helperBool(i,28),
-                        WithDraw = helperBool(i,31),
-                        TheoryExam = helperRetriveDate(i,32),
-                        PracticeExam = helperRetriveDate(i, 33),
-                        JobPalcement = helperRetriveString(i, 34),
-                        Sap300 = helperRetriveInt(i, 35),
-                        Sap600 = helperRetriveInt(i, 36),
+                        ByAge = helperByAge(helperRetriveInt(i,18)),
+                        Country = helperRetriveString(i,20),
+                        CountryOfPaperWork = helperRetriveString(i, 21),
+                        KindOfPaperWork = helperRetriveString(i, 22),
+                        paperNumber = helperRetriveInt(i, 23) ,
+                        Ethic = tempEthic,
+                        Transfer = helperBool(i,25),
+                        HoursTransfer = helperRetriveInt(i,26),
+                        TotalEnroll = helperRetriveInt(i, 27),
+                        TotalHours = helperRetriveInt(i, 28),
+                        LeaveOfAbsense = helperBool(i,29),
+                        WithDraw = helperBool(i,32),
+                        TheoryExam = helperRetriveDate(i,33),
+                        PracticeExam = helperRetriveDate(i, 34),
+                        JobPalcement = helperRetriveString(i, 35),
+                        Sap300 = helperRetriveInt(i, 36),
+                        Sap600 = helperRetriveInt(i, 37),
 
                     });
                     if ((range.Cells[i+1,1] as Excel.Range).Value2 == null)
@@ -110,7 +123,7 @@ namespace DatabaseView
                         i = range.Rows.Count;
                     }
                 }
-            }
+           // }
             workbook.Close(true, null, null);
             excelApp.Quit();
             MainDataGrid.ItemsSource = Myusers;
@@ -169,17 +182,17 @@ namespace DatabaseView
             
         }
         //helper, change the word to be specific used
-        public string helperByAge(int age)
+        public Student.byage helperByAge(int age)
         {
-            string result = "unknown";
+            Student.byage result = Student.byage.unknown;
             if (age < 18)
-                result = "Under18";
+                result = Student.byage.Under_18;
             else if (age < 25)
-                result = "eigteentotwentyfour";
+                result = Student.byage._18_To_24;
             else if (age < 40)
-                result = "twentyfivetothirtynine";
+                result = Student.byage._25_To_39;
             else if (age > 40)
-                result = "fourtyplus";
+                result = Student.byage._40_Plus;
 
             return result;
 
@@ -257,7 +270,27 @@ namespace DatabaseView
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            workSheethelper();
+            statsCombBx.ItemsSource = Enum.GetValues(typeof(Student.status)).Cast<Student.status>();
+            FinacialCombBox.ItemsSource = Enum.GetValues(typeof(Student.finalcialAid)).Cast<Student.finalcialAid>();
+            visaCombBx.ItemsSource = Enum.GetValues(typeof(Student.visaStatus)).Cast<Student.visaStatus>();
+            genCombBx.ItemsSource = Enum.GetValues(typeof(Student.gender)).Cast<Student.gender>();
+            byAgeCombBx.ItemsSource = Enum.GetValues(typeof(Student.byage)).Cast<Student.byage>();
+            ethicCombBx.ItemsSource = Enum.GetValues(typeof(Student.ethic)).Cast<Student.ethic>();
+            //workSheethelper();
+        }
+
+        private void MainDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                double age = ((Myusers[MainDataGrid.SelectedIndex].StartDate - Myusers[MainDataGrid.SelectedIndex].DOB).TotalDays/365);
+                ageTxtBlck.Text = age.ToString("F0");
+            }
+            catch (Exception)
+            {
+                
+                
+            } 
         }       
     }
 }

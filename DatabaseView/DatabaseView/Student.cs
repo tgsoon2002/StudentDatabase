@@ -12,25 +12,29 @@ namespace DatabaseView
 
         public enum status
         {
-            current,
-            pending,
-            graduate,
-            cancel
+            Current,
+            Pending,
+            Graduate,
+            Cancel
+
         }
         public enum visaStatus
         {
             F1,
             M1,
-            other
+            Other
         }
         public enum gender
-        { Men,Women}
+        { 
+            Men,Women
+        }
         public enum byage
         {
-         Under18,
-         eigteento24,
-         twentyfivetothirtynine ,
-         fourtyplus
+         Under_18,
+         _18_To_24,
+         _25_To_39 ,
+         _40_Plus,
+            unknown
         }
         public enum ethic
         {            
@@ -44,13 +48,17 @@ namespace DatabaseView
             Two_or_More,            
             unknown            
         }
+        public enum finalcialAid
+        {
+            NFA,FA
+        }
 
         public int Id { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string MName { get; set; }
         public status Status { get; set; }
-        public bool FinaAid { get; set; }
+        public finalcialAid FinaAid { get; set; }
         public visaStatus visaStats { get; set; }
         public bool fullTime { get; set; }
         public DateTime StartDate { get; set; }
@@ -77,7 +85,8 @@ namespace DatabaseView
         public int HoursTransfer { get; set; }
         public int TotalEnroll { get; set; }
         public int TotalHours { get; set; }
-        public bool LeaveOrAbsense { get; set; }
+        public bool LeaveOfAbsense { get; set; }
+        public int LOAPeriod { get; set; }
         public bool WithDraw { get; set; }
         public DateTime TheoryExam { get; set; }
         public DateTime PracticeExam { get; set; }

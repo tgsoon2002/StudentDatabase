@@ -3,27 +3,128 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:wpfDatagrid="clr-namespace:Xceed.Wpf.DataGrid;assembly=Xceed.Wpf.DataGrid"
-        
-        Title="MainWindow" Height="415.508" Width="741.466">
+                                               Loaded="Window_Loaded"
+        Title="MainWindow" Height="475.754" Width="1289">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition/>
+            <RowDefinition Height="168"/>
+            <RowDefinition Height="202*"/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
+        <!--detail grid-->
         <Grid Grid.Row="0">
-            <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="38"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="43,3,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Fisrt Name" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68"/>
+            <TextBox Name="fNameTxtBx" HorizontalAlignment="Left" Height="23" Margin="73,3,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.FName,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Last Name" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68" Margin="1,31,0,0"/>
+            <TextBox Name="lNameTxtBx" HorizontalAlignment="Left" Height="23" Margin="74,32,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.LName,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Mid Name" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68" Margin="0,61,0,0"/>
+            <TextBox Name="mNameTxtBx" HorizontalAlignment="Left" Height="23" Margin="73,64,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.MName,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Finalcial" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="53" Margin="199,0,0,0"/>
+            <ComboBox Name="FinacialCombBox" HorizontalAlignment="Left" Height="26" Margin="262,0,0,0" SelectedValue="{Binding SelectedItem.FinaAid,ElementName=MainDataGrid,Mode=OneWay}"  VerticalAlignment="Top" Width="97"/>
+            <Label Content="Visa Stats" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="63" Margin="199,30,0,0"/>
+            <ComboBox Name="visaCombBx" HorizontalAlignment="Left" Height="26" Margin="262,29,0,0" SelectedValue="{Binding SelectedItem.visaStats,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="97"/>
+            <Label Content="Gender" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="58" Margin="199,61,0,0"/>
+            <ComboBox x:Name="genCombBx" HorizontalAlignment="Left" Height="26" Margin="262,60,0,0" SelectedValue="{Binding SelectedItem.Gender,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="97"/>
+            <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68" Margin="0,87,0,0"/>
+            <ComboBox Name="statsCombBx" HorizontalAlignment="Left" Height="23" Margin="73,90,0,0" SelectedValue="{Binding SelectedItem.Status,ElementName=MainDataGrid}" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Phone #" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="63" Margin="199,90,0,0"/>
+            <TextBox Name="PhoneTxtBx" HorizontalAlignment="Left" Height="26" Margin="262,90,0,0" Text="{Binding SelectedItem.CellPhone,ElementName=MainDataGrid,StringFormat={}{0:(###)###-####},Mode=OneWay}"  VerticalAlignment="Top" Width="97"/>
+            <Label Content="Start Date" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="81" Margin="365,-3,0,0"/>
+            <DatePicker Name="StartDatPcker" HorizontalAlignment="Left" Height="23" Margin="451,0,0,0" SelectedDate="{Binding SelectedItem.StartDate,ElementName=MainDataGrid,Mode=OneWay}"  VerticalAlignment="Top" Width="120"/>
+            <Label Content="Schedule Date" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="86" Margin="365,28,0,0"/>
+            <DatePicker Name="scheDatPcker" HorizontalAlignment="Left" Height="23" Margin="451,31,0,0" SelectedDate="{Binding SelectedItem.ScheduleDate,ElementName=MainDataGrid,Mode=OneWay}"  VerticalAlignment="Top" Width="120"/>
+            <Label Content="End Date" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="81" Margin="365,60,0,0"/>
+            <DatePicker Name="EndDatPcker" HorizontalAlignment="Left" Height="23" Margin="451,61,0,0" SelectedDate="{Binding SelectedItem.EndDate,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Full Time" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="62" Margin="585,-1,0,0"/>
+            <CheckBox Name= "fullTimeChckBx" HorizontalAlignment="Left" Margin="672,6,0,0" IsChecked="{Binding SelectedItem.FullTime,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" >
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.7" ScaleY="1.7"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+            <Label Content="Date Of Birth" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="81" Margin="365,87,0,0"/>
+            <DatePicker x:Name="DOBDatPcker" HorizontalAlignment="Left" Height="23" Margin="451,88,0,0" SelectedDate="{Binding SelectedItem.DOB,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Address" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68" Margin="742,0,0,0"/>
+            <TextBox x:Name="addTxtBx" HorizontalAlignment="Left" Height="23" Margin="815,3,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Address,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="225"/>
+            <Label Content="Note" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68" Margin="742,31,0,0"/>
+            <TextBox x:Name="noteTxtBx" HorizontalAlignment="Left" Height="23" Margin="815,34,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Note,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="225"/>
+            <Label Content="SSN" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68" Margin="742,57,0,0"/>
+            <TextBox x:Name="SSNTxtBx" HorizontalAlignment="Left" Height="23" Margin="815,60,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.SSN,ElementName=MainDataGrid,StringFormat={}{0:###-##-####},Mode=OneWay}" VerticalAlignment="Top" Width="225"/>
+            <Label Content="Driver License" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68" Margin="742,87,0,0"/>
+            <TextBox x:Name="drLicenTxtBx" HorizontalAlignment="Left" Height="23" Margin="815,90,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.driverLicenseNumber,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="225"/>
+            <Label Content="Age" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="54" Margin="585,28,0,0"/>
+            <TextBlock Name="ageTxtBlck" HorizontalAlignment="Left" Margin="655,31,0,0"  VerticalAlignment="Top" Width="50" Height="26"/>
+            <Label Content="By Age" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="54" Margin="585,58,0,0"/>
+            <ComboBox x:Name="byAgeCombBx" HorizontalAlignment="Left" Margin="634,58,0,0" SelectedValue="{Binding SelectedItem.ByAge,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="91" Height="26"/>
+            <Label Content="Ethic" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="54" Margin="585,86,0,0"/>
+            <ComboBox x:Name="ethicCombBx" HorizontalAlignment="Left" Margin="634,86,0,0" SelectedValue="{Binding SelectedItem.Ethic,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="91" Height="26"/>
+            <Label Content="Transfer" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="62" Margin="1048,2,0,0"/>
+            <CheckBox Name="TransChckBx" HorizontalAlignment="Left" Margin="1154,8,0,0" IsChecked="{Binding SelectedItem.Transfer,ElementName=MainDataGrid,Mode=OneWay}"  VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" >
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.7" ScaleY="1.7"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+            <Label Content="Hours Transfer" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="93" Margin="1055,32,0,0"/>
+            <TextBox x:Name="hourTransTxtBx" HorizontalAlignment="Left" Height="26" Margin="1148,32,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.HoursTransfer,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="123"/>
+            <Label Content="Total Enroll" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="93" Margin="1055,58,0,0"/>
+            <TextBox x:Name="totalEnrollTxtBx" HorizontalAlignment="Left" Height="26" Margin="1148,58,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.TotalEnroll,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="123"/>
+            <Label Content="Total Hours" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="93" Margin="1055,87,0,0"/>
+            <TextBox x:Name="totalHoursTxtBx" HorizontalAlignment="Left" Height="26" Margin="1148,87,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.TotalHours,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="123"/>
+            <Label Content="Country" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68" Margin="0,115,0,0"/>
+            <TextBox x:Name="countryTxtBx" HorizontalAlignment="Left" Height="23" Margin="73,115,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Country,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Nationality" Height="26" Width="68" Margin="0,141,1213,1"/>
+            <TextBox x:Name="nationTxtBx"  Height="23" Margin="74,144,1087,1" TextWrapping="Wrap" Text="{Binding SelectedItem.CountryOfPaperWork,ElementName=MainDataGrid,Mode=OneWay}" Width="120"/>
+            <Label Content="PaperWork" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="72" Margin="199,117,0,0"/>
+            <TextBox x:Name="PapWorkTxtBx" HorizontalAlignment="Left" Height="26" Margin="277,117,0,0" Text="{Binding SelectedItem.KindOfPaperWork,ElementName=MainDataGrid,Mode=OneWay}"  VerticalAlignment="Top" Width="82"/>
+            <Label Content="PaperWork#" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="78" Margin="199,142,0,0"/>
+            <TextBox x:Name="PWNumberTxtBx" HorizontalAlignment="Left" Height="26" Margin="277,142,0,0" Text="{Binding SelectedItem.paperNumber,ElementName=MainDataGrid,Mode=OneWay}"  VerticalAlignment="Top" Width="82"/>
+            <Label Content="L.O.A" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="62" Margin="586,116,0,0"/>
+            <CheckBox x:Name= "LOAChckBx" HorizontalAlignment="Left" Margin="673,123,0,0" IsChecked="{Binding SelectedItem.LeaveOrAbsense,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" >
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.7" ScaleY="1.7"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+            <Label Content="LOA Length" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="78" Margin="585,144,0,-2"/>
+            <TextBox x:Name="LOALengthTxtBx" HorizontalAlignment="Left" Height="26" Margin="663,144,0,-2" Text="{Binding SelectedItem.LOAPeriod,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="48"/>
+            <Label Content="days" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="36" Margin="713,142,0,0"/>
+            <Label Content="Theory Exam" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="81" Margin="365,114,0,0"/>
+            <DatePicker x:Name="TheoryDatPcker" HorizontalAlignment="Left" Height="23" Margin="451,115,0,0" SelectedDate="{Binding SelectedItem.TheoryExam,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Practice Exam" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="81" Margin="365,139,0,0"/>
+            <DatePicker x:Name="PracticeDatPcker" HorizontalAlignment="Left" Height="23" Margin="451,140,0,0" SelectedDate="{Binding SelectedItem.PracticeExam,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Job Placement" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="68" Margin="742,116,0,0"/>
+            <TextBox x:Name="JobPlacementTxtBx" HorizontalAlignment="Left" Height="23" Margin="815,119,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.JobPalcement,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="225"/>
+            <Label Content="Sap 300" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="93" Margin="1055,115,0,0"/>
+            <TextBox x:Name="S300TxtBx" HorizontalAlignment="Left" Height="26" Margin="1148,115,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Sap300,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="123"/>
+            <Label Content="Sap 600" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="93" Margin="1055,140,0,0"/>
+            <TextBox x:Name="S600TxtBx" HorizontalAlignment="Left" Height="26" Margin="1148,140,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.Sap600,ElementName=MainDataGrid,Mode=OneWay}" VerticalAlignment="Top" Width="123"/>
+
+
+
         </Grid>
 
-
-        <DataGrid Name ="MainDataGrid" Grid.Row="1" BorderThickness="2" BorderBrush="Black" ItemsSource="{Binding users}" >
+        <!--Data grid-->
+        <DataGrid Name ="MainDataGrid" Grid.Row="1" BorderThickness="2" BorderBrush="Black" ItemsSource="{Binding users}" 
+                  SelectionChanged="MainDataGrid_SelectionChanged" IsReadOnly="True">
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Header="FirstName" Binding="{Binding FName}" />
                 <DataGridTextColumn Header="LastName" Binding="{Binding LName}" />
                 <DataGridTextColumn Header="MidName" Binding="{Binding MName}" />
                 <DataGridTextColumn Header="DOB" Binding="{Binding DOB}" />-->
-                
+
                 <!--<DataGridTextColumn Header="Status" Binding="{Binding Birthday}" />
                 <DataGridTextColumn Header="FA/NFA" Binding="{Binding Birthday}" />
                 <DataGridTextColumn Header="VisaStatus" Binding="{Binding Birthday}" />
@@ -31,15 +132,16 @@
                 <DataGridTextColumn Header="Status" Binding="{Binding Birthday}" />
                 <DataGridTextColumn Header="Status" Binding="{Binding Birthday}" />
                 <DataGridTextColumn Header="Status" Binding="{Binding Birthday}" />-->
-            </DataGrid.Columns>
-            
+            </DataGrid.Columns>                                                                 
+
             <!--<DataGrid.RowDetailsTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Details}" Margin="10" />
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>-->
         </DataGrid>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="216,0,217,0" Width="300">
+        <!--Button stackpanel-->
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Margin="216,0,217,0" Width="300">
             <Button Content="LoadGrid" Width="90" Click="LoadButton_Click" Grid.Row="3" Margin="5,0"/>
             <Button Content="ClearGrid" Width="90" Click="ClearButton_Click" Grid.Row="3" Margin="5,0"/>
             <Button Content="SaveGrid" Width="90" Click="SaveButton_Click" Grid.Row="3" Margin="5,0"/>
