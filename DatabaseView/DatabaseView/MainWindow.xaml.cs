@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,28 +30,19 @@ namespace DatabaseView
     /// </summary>
     public partial class MainWindow : Window
     {
-        //comboBox1.DataSource = Enum.GetValues(typeof(MyEnum));
-        
-        //local property
-        string fmtPhone = "000-000-0000";
-        string fmtSSN = "000-00-0000";
-
+        //local property     
+        System.Data.OleDb.OleDbDataAdapter studentDataAdapter;
+        System.Data.DataSet dataSet1;
         public List<Student> Myusers = new List<Student>();
-        //public ObservableCollection<Student> Myusers { get; set; }
         OpenFileDialog dlg = new OpenFileDialog();
         Excel.Application excelApp = new Excel.Application();
         Excel.Workbook workbook;
         Excel.Worksheet worksheet;
         Excel.Range range;
-
-       
-        
+     
         public MainWindow()
         {
-            InitializeComponent();   
-           
-               
-            
+            InitializeComponent();          
         }
         public void workSheethelper()
         {
@@ -63,22 +55,18 @@ namespace DatabaseView
                 workbook = excelApp.Workbooks.Open(dlg.FileName, 0, true, 5, "", "", true, 
                     Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);               
             }
-
-            
+     
             int numSheets = workbook.Sheets.Count; // get number of sheet in the workbook
-            //for (int sheetNum = 1; sheetNum < numSheets + 1; sheetNum++)
-            //{
+           
                 worksheet = (Excel.Worksheet)workbook.Sheets[1];          
                 range = worksheet.UsedRange;
                
                 for (var i = 2; i <= range.Rows.Count; i++)    // start add value to the range. skip the first on which for the header.
-                {
-                    
+                {                  
                     Student.status tempStats = (Student.status)Enum.Parse(typeof(Student.status), (string)(range.Cells[i, 4] as Excel.Range).Value2);
                      Student.finalcialAid tempFA = (Student.finalcialAid)Enum.Parse(typeof(Student.finalcialAid), (string)(range.Cells[i, 5] as Excel.Range).Value2);
                     Student.visaStatus tempVisaStats = (Student.visaStatus)Enum.Parse(typeof(Student.visaStatus), (string)(range.Cells[i, 6] as Excel.Range).Value2) ;
-                    Student.ethic tempEthic = (Student.ethic)Enum.Parse(typeof(Student.ethic), helperEthic(helperRetriveString(i,24)));
-                    //MessageBox.Show("row" + i);
+                    Student.ethic tempEthic = (Student.ethic)Enum.Parse(typeof(Student.ethic), helperEthic(helperRetriveString(i,24)));                    
                     Myusers.Add(new Student
                     {
                         Id = i,//(int)(range.Cells[i, 1] as Excel.Range).Value2,
@@ -101,7 +89,7 @@ namespace DatabaseView
                         DOB = helperRetriveDate(i,17) ,
                         ByAge = helperByAge(helperRetriveInt(i,18)),
                         Country = helperRetriveString(i,20),
-                        CountryOfPaperWork = helperRetriveString(i, 21),
+                        Nationality = helperRetriveString(i, 21),
                         KindOfPaperWork = helperRetriveString(i, 22),
                         paperNumber = helperRetriveInt(i, 23) ,
                         Ethic = tempEthic,
@@ -116,14 +104,13 @@ namespace DatabaseView
                         JobPalcement = helperRetriveString(i, 35),
                         Sap300 = helperRetriveInt(i, 36),
                         Sap600 = helperRetriveInt(i, 37),
-
                     });
                     if ((range.Cells[i+1,1] as Excel.Range).Value2 == null)
                     {
                         i = range.Rows.Count;
                     }
                 }
-           // }
+         
             workbook.Close(true, null, null);
             excelApp.Quit();
             MainDataGrid.ItemsSource = Myusers;
@@ -265,6 +252,30 @@ namespace DatabaseView
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+    //        Excel.Application excel = new Excel.Application();
+    //        excel.Visible = true;
+    //        Excel.Workbook wb = excel.Workbooks.Add();
+    //        Excel.Worksheet sh = wb.Sheets.Add();
+    //        sh.Name = "TestSheet";
+    //        range = sh.UsedRange;
+    //        // Write some kind of loop to write your values in sheet. Here i am adding values in 1st columns
+    //        for (int i = 0; i < Myusers.Count; i++)
+    //        {
+    //             //   (range.Cells[i, 14] as Excel.Range).Value2                
+    //            (range.Cells[i + 1, 1] as Excel.Range).Value2 = Myusers[i].FName;
+    //            (range.Cells[i + 1, 2] as Excel.Range).Value2 = Myusers[i].LName;
+    //            (range.Cells[i + 1, 3] as Excel.Range).Value2 = Myusers[i].MName;
+    //            (range.Cells[i + 1, 4] as Excel.Range).Value2 = Myusers[i].Status.ToString();
+    //        }
+    //        string filePath = @"C:\output123.xlsx";
+    //        // Save file to filePath
+    //        wb.SaveAs(filePath, Excel.XlFileFormat.xlOpenXMLWorkbook, Missing.Value,Missing.Value, false, false, Excel.XlSaveAsAccessMode.xlNoChange,
+    //Excel.XlSaveConflictResolution.xlUserResolution, true,
+    //Missing.Value, Missing.Value, Missing.Value);
+    //       // Open(dlg.FileName, 0, true, 5, "", "", true,Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0); 
+    //        wb.Close(true);
+    //        excel.Quit(); 
+              
            
         }
 
@@ -276,7 +287,10 @@ namespace DatabaseView
             genCombBx.ItemsSource = Enum.GetValues(typeof(Student.gender)).Cast<Student.gender>();
             byAgeCombBx.ItemsSource = Enum.GetValues(typeof(Student.byage)).Cast<Student.byage>();
             ethicCombBx.ItemsSource = Enum.GetValues(typeof(Student.ethic)).Cast<Student.ethic>();
-            //workSheethelper();
+            Login newLogin = new Login();
+            //this.Hide();
+            //newLogin.Show();
+            
         }
 
         private void MainDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -287,10 +301,23 @@ namespace DatabaseView
                 ageTxtBlck.Text = age.ToString("F0");
             }
             catch (Exception)
-            {
-                
-                
+            {      
             } 
+        }
+
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+            studentDataAdapter.InsertCommand.CommandText = QueryTxtBx.Text;
+            dataSet1.Clear();
+            studentDataAdapter.Fill(dataSet1, "Login");
+            MainDataGrid.ItemsSource = dataSet1.Tables[1].DefaultView;
+            //studentDataAdapter.SelectCommand.ExecuteNonQuery();
+ // Fill data set with information that results
+ // from SQL query
+ 
+
+ // bind DataGrid to contents of DataSet
+ 
         }       
     }
 }

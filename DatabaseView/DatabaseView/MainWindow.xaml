@@ -4,12 +4,12 @@
         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:wpfDatagrid="clr-namespace:Xceed.Wpf.DataGrid;assembly=Xceed.Wpf.DataGrid"
                                                Loaded="Window_Loaded"
-        Title="MainWindow" Height="475.754" Width="1289">
+        Title="MainWindow" Height="559.754" Width="1289">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="168"/>
-            <RowDefinition Height="202*"/>
-            <RowDefinition Height="35"/>
+            <RowDefinition/>
+            <RowDefinition Height="94"/>
         </Grid.RowDefinitions>
         <!--detail grid-->
         <Grid Grid.Row="0">
@@ -132,7 +132,7 @@
                 <DataGridTextColumn Header="Status" Binding="{Binding Birthday}" />
                 <DataGridTextColumn Header="Status" Binding="{Binding Birthday}" />
                 <DataGridTextColumn Header="Status" Binding="{Binding Birthday}" />-->
-            </DataGrid.Columns>                                                                 
+            </DataGrid.Columns>
 
             <!--<DataGrid.RowDetailsTemplate>
                 <DataTemplate>
@@ -141,10 +141,13 @@
             </DataGrid.RowDetailsTemplate>-->
         </DataGrid>
         <!--Button stackpanel-->
-        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Margin="216,0,217,0" Width="300">
-            <Button Content="LoadGrid" Width="90" Click="LoadButton_Click" Grid.Row="3" Margin="5,0"/>
-            <Button Content="ClearGrid" Width="90" Click="ClearButton_Click" Grid.Row="3" Margin="5,0"/>
-            <Button Content="SaveGrid" Width="90" Click="SaveButton_Click" Grid.Row="3" Margin="5,0"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+         
+            <TextBox Name="QueryTxtBx" Width="200" Margin="5,0"/>
+            <Button Content="SubmitQuerry" Click="SubmitButton_Click" Margin="5,0"/>
+            <Button Content="LoadGrid" Width="90" Click="LoadButton_Click" Margin="5,0"/>
+            <Button Content="ClearGrid" Width="90" Click="ClearButton_Click"  Margin="5,0"/>
+            <Button Content="SaveGrid" Width="90" Click="SaveButton_Click" Margin="5,0"/>
         </StackPanel>
 
 

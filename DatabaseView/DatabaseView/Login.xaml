@@ -1,0 +1,30 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:DatabaseView" x:Class="DatabaseView.Login"
+        Title="Login" Height="300" Width="300" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:StudentDatabaseDataSet x:Key="studentDatabaseDataSet"/>
+        <CollectionViewSource x:Key="loginViewSource" Source="{Binding Login, Source={StaticResource studentDatabaseDataSet}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource loginViewSource}">
+        <Grid x:Name="grid1" Margin="0,0,0,198" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>                
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+           
+            
+            <Label Content="User Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="userNameTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="0" Text="{Binding UserName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Password:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="passwordTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="2" Text="{Binding Password, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="126,108,0,0" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>

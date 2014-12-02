@@ -77,7 +77,7 @@ namespace DatabaseView
         public string  driverLicenseNumber { get; set; }
         public byage ByAge { get; set; }
         public string Country { get; set; }
-        public string CountryOfPaperWork { get; set; }
+        public string Nationality { get; set; }
         public string  KindOfPaperWork { get; set; }
         public int paperNumber { get; set; }
         public ethic Ethic { get; set; }
