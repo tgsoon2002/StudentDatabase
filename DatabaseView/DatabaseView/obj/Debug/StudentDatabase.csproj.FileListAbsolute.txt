@@ -10,19 +10,26 @@ C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\ob
 C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\StudentDatabase.csproj.GenerateResource.Cache
 C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\DatabaseView.exe
 C:\Users\user\Documents\Visual Studio 2013\Projects\DatabaseView\DatabaseView\obj\Debug\DatabaseView.pdb
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\bin\Debug\Model\StudentDatabase.mdf
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\bin\Debug\Model\StudentDatabase_log.ldf
 C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\bin\Debug\DatabaseView.exe.config
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView.exe
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView.pdb
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\StudentDatabase.csprojResolveAssemblyReference.cache
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\MainWindow.baml
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\MainWindow.g.cs
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\App.g.cs
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView_MarkupCompile.cache
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView.g.resources
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView.Properties.Resources.resources
-C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\StudentDatabase.csproj.GenerateResource.Cache
 C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\bin\Debug\DatabaseView.exe
 C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\bin\Debug\DatabaseView.pdb
 C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\bin\Debug\Xceed.Wpf.DataGrid.dll
 C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\StudentDatabase.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\StudentDatabase.csproj.ResolveComReference.cache
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\Login.baml
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\MainWindow.baml
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\Login.g.cs
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\MainWindow.g.cs
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\App.g.cs
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView_Content.g.cs
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView_MarkupCompile.cache
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView.g.resources
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView.Properties.Resources.resources
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\StudentDatabase.csproj.GenerateResource.Cache
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView.exe
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView.pdb
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\user\Documents\GitHub\StudentDatabase\DatabaseView\DatabaseView\obj\Debug\DatabaseView_MarkupCompile.lref
